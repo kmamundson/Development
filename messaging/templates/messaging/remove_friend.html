@@ -1,0 +1,9 @@
+<h1>{{user.name}}</h1>
+
+<ul>
+  {% for possible_friend in friends_list%}
+  {% if possible_friend is not user and possible_friend in user.friends.all %}
+  <li><p>{{ possible_friend.name }}</p><a  href="/messaging/destroy_friendship/{{possible_friend.id}},{{user.id}}/">Remove Friend</a></li>
+  {% endif %}
+  {% endfor %}
+</ul>

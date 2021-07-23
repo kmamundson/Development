@@ -1,0 +1,13 @@
+<h1>Add a Message</h1>
+<form action="{% url 'messaging:create_message' user.id %}" method="post">
+{% csrf_token %}
+{% for friend in user.friends.all %}
+    <input type="checkbox" name="choice" id="friend{{ forloop.counter }}" value="{{ friend.id }}">
+    <label for="friend{{ forloop.counter }}">{{ friend.name }}</label><br>
+{% endfor %}
+<label for="subject_text">Subject:</label>
+<input type="text" name="subject_text" id="subject_text">
+<label for="message_text">Message:</label>
+<textarea name="message_text" rows="8" cols="80"></textarea>
+<input type="submit" value="Send">
+</form>

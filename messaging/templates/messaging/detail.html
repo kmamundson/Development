@@ -1,0 +1,26 @@
+<h1>{{ user.name }}</h1>
+
+<ul>
+  {% for a_friend in user.friends.all %}
+      <li>{{ a_friend.name }}</li>
+  {% endfor %} 
+</ul>
+
+<ul>
+  {% for recieved_message in user.recieved_messages.all %}
+      <li>{{ recieved_message.subject_text }}
+      <br>
+      {{ recieved_message.message_text }}</li>
+  {% endfor %} 
+</ul>
+
+<ul>
+  {% for sent_message in sent_messages %}
+      <li>{{ sent_message.subject_text }}
+        <br>
+      {{ sent_message.message_text }}</li>
+  {% endfor %} 
+</ul>
+<a href="{% url 'messaging:add_friend' user.id %}">Add A Friend</a>
+<a href="{% url 'messaging:remove_friend' user.id %}">Remove A Friend</a>
+

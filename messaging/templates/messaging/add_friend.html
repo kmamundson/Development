@@ -1,0 +1,9 @@
+<h1>{{user.name}}</h1>
+
+<ul>
+  {% for possible_friend in possible_friends_list%}
+  {% if possible_friend and possible_friend is not user %}
+  <li><p>{{ possible_friend.name }}</p><a  href="/messaging/create_friendship/{{possible_friend.id}},{{user.id}}/">Add Friend</a></li>
+  {% endif %}
+  {% endfor %}
+</ul>
